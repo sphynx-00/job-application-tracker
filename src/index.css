@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+/* Dark mode turns on when the <html> tag has the class "dark". */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Makes scrollbars and number-input arrows dark too. */
+html.dark {
+  color-scheme: dark;
+}
+
 @theme {
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition:
+      background-color200ms ease-in-out,
+      color 300ms ease-in-out,
+      border-color 300ms ease-in-out,
+      box-shadow 300ms ease-in-out,
+      translate 300ms ease-in-out,
+      transform 300ms ease-in-out !important;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
