@@ -8,7 +8,7 @@ const tabs = [
   { id: "search",       label: "Job Search",      icon: Search,        href: "#search" },
 ];
 
-export default function TopNav({ active, onNavigate, onAddJob }) {
+export default function TopNav({ active, onNavigate, onAddJob, addOpen = false }) {
   return (
     <header className="bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-4 py-3 lg:px-6">
@@ -47,7 +47,7 @@ export default function TopNav({ active, onNavigate, onAddJob }) {
 
         {/* BOX 3: actions. The button shows only a plus on phones */}
         <div className="flex items-center gap-3 lg:gap-4">
-          <Button onClick={onAddJob} aria-label="Add job">
+          <Button onClick={onAddJob} aria-label="Add job" aria-expanded={addOpen} aria-controls="add-job-form">
             <Plus className="size-5" aria-hidden="true" />
             <span className="hidden sm:inline">Add Job</span>
           </Button>
