@@ -1,9 +1,9 @@
 // Tailwind finds class names by reading this file as plain text,
 // so always write the full class name ("bg-blue-100"), never build it from pieces.
 const tints = {
-  blue: "bg-blue-100 text-blue-600",
-  green: "bg-green-100 text-green-600",
-  purple: "bg-purple-100 text-purple-600",
+  blue: "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400",
+  green: "bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400",
+  purple: "bg-purple-100 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400",
 };
 
 const solids = {

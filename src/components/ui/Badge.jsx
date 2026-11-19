@@ -1,6 +1,7 @@
+// A small rounded pill, like "Online".
 export default function Badge({ children }) {
   return (
-    <span className="whitespace-nowrap rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 lg:px-3 lg:py-1 lg:text-sm">
+    <span className="whitespace-nowrap rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/20 dark:text-blue-300 lg:px-3 lg:py-1 lg:text-sm">
       {children}
     </span>
   );

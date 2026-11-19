@@ -40,7 +40,7 @@ export default function AddJobForm({ onSave, onCancel }) {
   }
 
   return (
-    <div id="add-job-form" className="border-t border-gray-100 bg-white shadow-sm">
+    <div id="add-job-form" className="border-t dark:border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
       <form
         onSubmit={handleSubmit}
         onKeyDown={(event) => event.key === "Escape" && onCancel()}
@@ -102,7 +102,7 @@ export default function AddJobForm({ onSave, onCancel }) {
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-xl px-4 py-2.5 text-gray-600 hover:bg-gray-100"
+            className="rounded-xl px-4 py-2.5 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
           >
             Cancel
           </button>
