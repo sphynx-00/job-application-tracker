@@ -24,6 +24,7 @@ export function computeStats(applications, interviews, now = new Date()) {
     interviews: interviews.length,
     upcoming: interviews.filter((i) => i.at > now).length,
     offers: applications.filter((a) => a.status === "offer").length,
+    rejected: applications.filter((a) => a.status === "rejected").length,
     responseRate: applications.length ? Math.round((responded / applications.length) * 100) : 0,
   };
 }
