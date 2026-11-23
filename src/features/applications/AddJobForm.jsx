@@ -7,7 +7,12 @@ const inputClass =
 // The panel that drops down under the nav when you press "Add Job".
 // It keeps what you typed in `values` and calls onSave with a new application.
 export default function AddJobForm({ onSave, onCancel }) {
-  const [values, setValues] = useState({ title: "", company: "", salaryMin: "", salaryMax: "" });
+  const [values, setValues] = useState({
+    title: "",
+    company: "",
+    salaryMin: "",
+    salaryMax: "",
+  });
   const [error, setError] = useState("");
 
   function update(field) {
@@ -40,13 +45,16 @@ export default function AddJobForm({ onSave, onCancel }) {
   }
 
   return (
-    <div id="add-job-form" className="border-t dark:border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
+    <div
+      id="add-job-form"
+      className="border-t dark:border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm"
+    >
       <form
         onSubmit={handleSubmit}
         onKeyDown={(event) => event.key === "Escape" && onCancel()}
-        className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-4 lg:grid-cols-5 lg:items-end lg:gap-4 lg:px-6 lg:py-5"
+        className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-4 sm:gap-4 sm:px-6 md:gap-4 md:px-6 md:gap-4 md:px-6 lg:grid-cols-12 lg:items-end lg:py-5"
       >
-        <label className="col-span-2 grid gap-1.5 text-sm text-gray-600 lg:col-span-1">
+        <label className="col-span-2 grid gap-1.5 text-sm text-gray-600 dark:text-gray-400 md:col-span-1 lg:col-span-3">
           Job title
           <input
             className={inputClass}
@@ -58,7 +66,7 @@ export default function AddJobForm({ onSave, onCancel }) {
           />
         </label>
 
-        <label className="col-span-2 grid gap-1.5 text-sm text-gray-600 lg:col-span-1">
+        <label className="col-span-2 grid gap-1.5 text-sm text-gray-600 dark:text-gray-400 md:col-span-1 lg:col-span-3">
           Company
           <input
             className={inputClass}
@@ -69,7 +77,7 @@ export default function AddJobForm({ onSave, onCancel }) {
           />
         </label>
 
-        <label className="grid gap-1.5 text-sm text-gray-600">
+        <label className="grid gap-1.5 text-sm text-gray-600 dark:text-gray-400 lg:col-span-2">
           Salary from (£)
           <input
             className={inputClass}
@@ -83,7 +91,7 @@ export default function AddJobForm({ onSave, onCancel }) {
           />
         </label>
 
-        <label className="grid gap-1.5 text-sm text-gray-600">
+        <label className="grid gap-1.5 text-sm text-gray-600 dark:text-gray-400 lg:col-span-2">
           Salary to (£)
           <input
             className={inputClass}
@@ -97,8 +105,10 @@ export default function AddJobForm({ onSave, onCancel }) {
           />
         </label>
 
-        <div className="col-span-2 flex items-center gap-2 lg:col-span-1">
-          <Button type="submit">Save job</Button>
+        <div className="col-span-2 flex items-center gap-2 lg:col-span-2">
+          <Button type="submit" className="whitespace-nowrap">
+            Save job
+          </Button>
           <button
             type="button"
             onClick={onCancel}
@@ -109,7 +119,10 @@ export default function AddJobForm({ onSave, onCancel }) {
         </div>
 
         {error && (
-          <p role="alert" className="col-span-2 text-sm text-red-600 lg:col-span-5">
+          <p
+            role="alert"
+            className="col-span-2 text-sm text-red-600 dark:text-red-400 lg:col-span-12"
+          >
             {error}
           </p>
         )}
