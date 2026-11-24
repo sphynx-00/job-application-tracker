@@ -2,7 +2,7 @@ import { Briefcase, ClipboardList, House, Plus, Search } from "lucide-react";
 import Avatar from "../ui/Avatar";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink } from "react-router";
 
 const tabs = [
   { to: "/", label: "Dashboard", icon: House, end: true },
@@ -11,8 +11,6 @@ const tabs = [
 ];
 
 export default function TopNav({
-  active,
-  onNavigate,
   onAddJob,
   addOpen = false,
   theme,
@@ -36,17 +34,18 @@ export default function TopNav({
           aria-label="Main"
           className="order-last flex w-full gap-1 overflow-x-auto lg:order-none lg:w-auto"
         >
-          {tabs.map(({ id, label, icon: Icon, href }) => (
+          {tabs.map(({ to, label, icon: Icon, end }) => (
             <NavLink
-              key={id}
-              href={href}
-              onClick={() => onNavigate?.(id)}
-              aria-current={id === active ? "page" : undefined}
-              className={`inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-2.5 py-2.5 text-[15px] sm:px-4 sm:text-base lg:text-lg ${
-                id === active
-                  ? "bg-blue-50 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"
-                  : "text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
-              }`}
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                `inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-2.5 py-2.5 text-[15px] sm:px-4 sm:text-base lg:text-lg ${
+                  isActive
+                    ? "bg-blue-50 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"
+                    : "text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800"
+                }`
+              }
             >
               <Icon className="hidden size-5 sm:block" aria-hidden="true" />
               {label}
