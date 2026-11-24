@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import TopNav from "./components/layout/TopNav";
 import AddJobForm from "./features/applications/AddJobForm";
+import ApplicationsPage from "./pages/ApplicationsPage";
 import DashboardPage from "./pages/DashboardPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import SearchPage from "./pages/SearchPage";
 import { sampleApplications, sampleInterviews } from "./data/sampleData";
 import useTheme from "./hooks/useTheme";
 import { Routes, Route } from 'react-router';
