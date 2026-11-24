@@ -65,18 +65,17 @@ export default function DashboardPage({ applications, interviews }) {
             tone="green"
           />
           <StatCard
+            label="Rejected"
+            value={stats.rejected}
+            icon={CircleX}
+            tone="red"
+          />
+          <StatCard
             label="Response Rate"
             value={`${stats.responseRate}%`}
             icon={ChartColumn}
             tone="purple"
             footnote={`${stats.responseRate}% of ${stats.applications} applications`}
-          />
-          <StatCard
-            label="Rejected"
-            value={stats.rejected}
-            icon={CircleX}
-            tone="red"
-            className="col-span-2 lg:col-span-1"
           />
         </div>
 
