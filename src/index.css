@@ -8,6 +8,10 @@ html.dark {
   color-scheme: dark;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 @theme {
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
 }
