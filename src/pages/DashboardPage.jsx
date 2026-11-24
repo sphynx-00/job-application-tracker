@@ -1,4 +1,12 @@
-import { Briefcase, Calendar, CalendarPlus, ChartColumn, CircleCheck, CircleX, FileText } from "lucide-react";
+import {
+  Briefcase,
+  Calendar,
+  CalendarPlus,
+  ChartColumn,
+  CircleCheck,
+  CircleX,
+  FileText,
+} from "lucide-react";
 import PageHeader from "../components/layout/PageHeader";
 import SectionCard from "../components/layout/SectionCard";
 import ApplicationItem from "../features/applications/ApplicationItem";
@@ -34,7 +42,7 @@ export default function DashboardPage({ applications, interviews }) {
 
       <main className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 lg:gap-8 lg:px-6 lg:py-12">
         {/* BAND 3: 2 columns on phones, 4 from 1024px */}
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 lg:gap-4 xl:gap-6">
           <StatCard
             label="Applications"
             value={stats.applications}
@@ -68,17 +76,13 @@ export default function DashboardPage({ applications, interviews }) {
             value={stats.rejected}
             icon={CircleX}
             tone="red"
+            className="col-span-2 lg:col-span-1"
           />
         </div>
 
         {/* BAND 4: stacked on phones, side by side from 1024px */}
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
-          <SectionCard
-            icon={Calendar}
-            tone="blue"
-            title="Upcoming Interviews"
-            viewAllHref="#interviews"
-          >
+          <SectionCard icon={Calendar} tone="blue" title="Upcoming Interviews">
             {upcoming.length > 0 ? (
               upcoming.map((interview) => (
                 <InterviewItem
@@ -104,7 +108,7 @@ export default function DashboardPage({ applications, interviews }) {
             icon={Briefcase}
             tone="green"
             title="Recent Applications"
-            viewAllHref="#applications"
+            viewAllTo="/applications"
           >
             {recent.map((application) => (
               <ApplicationItem
