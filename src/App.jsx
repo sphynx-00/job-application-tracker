@@ -4,6 +4,7 @@ import AddJobForm from "./features/applications/AddJobForm";
 import DashboardPage from "./pages/DashboardPage";
 import { sampleApplications, sampleInterviews } from "./data/sampleData";
 import useTheme from "./hooks/useTheme";
+import { Routes, Route } from 'react-router';
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
@@ -29,8 +30,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <TopNav
-        active={active}
-        onNavigate={setActive}
         onAddJob={() => setShowForm((open) => !open)}
         addOpen={showForm}
         theme={theme}
@@ -44,7 +43,12 @@ export default function App() {
         />
       )}
 
-      <DashboardPage applications={applications} interviews={interviews} />
+      <Routes>
+        <Route path="/" element={<DashboardPage applications={applications} interviews={interviews} />} />
+        <Route path="/applications" element={<ApplicationsPage applications={applications} />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
 
       {notice && (
         <div

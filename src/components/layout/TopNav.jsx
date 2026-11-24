@@ -2,16 +2,12 @@ import { Briefcase, ClipboardList, House, Plus, Search } from "lucide-react";
 import Avatar from "../ui/Avatar";
 import Button from "../ui/Button";
 import ThemeToggle from "../ui/ThemeToggle";
+import { Link, NavLink } from 'react-router';
 
 const tabs = [
-  { id: "dashboard", label: "Dashboard", icon: House, href: "#dashboard" },
-  {
-    id: "applications",
-    label: "My Applications",
-    icon: ClipboardList,
-    href: "#applications",
-  },
-  { id: "search", label: "Job Search", icon: Search, href: "#search" },
+  { to: "/", label: "Dashboard", icon: House, end: true },
+  { to: "/applications", label: "My Applications", icon: ClipboardList },
+  { to: "/search", label: "Job Search", icon: Search },
 ];
 
 export default function TopNav({
@@ -26,14 +22,14 @@ export default function TopNav({
     <header className="bg-white shadow-sm dark:bg-gray-900 dark:shadow-none dark:border-b dark:border-gray-800">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-2 gap-y-3 px-4 py-3 sm:gap-x-4 lg:px-6">
         {/* BOX 1: logo */}
-        <a href="#dashboard" className="flex items-center gap-2 sm:gap-3">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3">
           <span className="grid size-10 place-items-center rounded-xl bg-blue-600 text-white lg:size-12 lg:rounded-2xl">
             <Briefcase className="size-5 lg:size-6" aria-hidden="true" />
           </span>
           <span className="text-lg font-semibold sm:text-xl lg:text-2xl">
             My Job Trackr
           </span>
-        </a>
+        </Link>
 
         {/* BOX 2: tabs. Own row on phones, centred between logo and actions from 1024px */}
         <nav
@@ -41,7 +37,7 @@ export default function TopNav({
           className="order-last flex w-full gap-1 overflow-x-auto lg:order-none lg:w-auto"
         >
           {tabs.map(({ id, label, icon: Icon, href }) => (
-            <a
+            <NavLink
               key={id}
               href={href}
               onClick={() => onNavigate?.(id)}
@@ -54,7 +50,7 @@ export default function TopNav({
             >
               <Icon className="hidden size-5 sm:block" aria-hidden="true" />
               {label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
