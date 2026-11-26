@@ -7,7 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import SearchPage from "./pages/SearchPage";
 import { sampleApplications, sampleInterviews } from "./data/sampleData";
 import useTheme from "./hooks/useTheme";
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from "react-router";
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
@@ -15,11 +15,36 @@ export default function App() {
   const [interviews] = useState(sampleInterviews);
   const [showForm, setShowForm] = useState(false);
   const [notice, setNotice] = useState("");
+  const [savedJobIds, setSavedJobIds] = useState([]);
 
   function handleSaveJob(job) {
     setApplications((current) => [job, ...current]);
     setShowForm(false);
     setNotice(`Added ${job.title} at ${job.company}`);
+  }
+
+  // Bookmark a job from the search page, or remove the bookmark.
+  function toggleSavedJob(id) {
+    setSavedJobIds((current) =>
+      current.includes(id) ? current.filter((x) => x !== id) : [...current, id],
+    );
+  }
+
+  // "Apply" on the search page adds the job to My Applications.
+  function handleApply(job) {
+    setApplications((current) => [
+      {
+        id: String(Date.now()),
+        title: job.title,
+        company: job.company,
+        status: "applied",
+        appliedAt: new Date(),
+        salaryMin: job.salaryMin,
+        salaryMax: job.salaryMax,
+      },
+      ...current,
+    ]);
+    setNotice(`Applied to ${job.title} at ${job.company}`);
   }
 
   // Hide the confirmation message after 3 seconds.
@@ -46,9 +71,30 @@ export default function App() {
       )}
 
       <Routes>
-        <Route path="/" element={<DashboardPage applications={applications} interviews={interviews} />} />
-        <Route path="/applications" element={<ApplicationsPage applications={applications} />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route
+          path="/"
+          element={
+            <DashboardPage
+              applications={applications}
+              interviews={interviews}
+            />
+          }
+        />
+        <Route
+          path="/applications"
+          element={<ApplicationsPage applications={applications} />}
+        />
+        <Route
+          path="/search"
+          element={
+            <SearchPage
+              applications={applications}
+              savedIds={savedJobIds}
+              onToggleSave={toggleSavedJob}
+              onApply={handleApply}
+            />
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
