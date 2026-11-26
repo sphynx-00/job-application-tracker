@@ -11,7 +11,6 @@ import { Routes, Route } from 'react-router';
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
-  const [active, setActive] = useState("dashboard");
   const [applications, setApplications] = useState(sampleApplications);
   const [interviews] = useState(sampleInterviews);
   const [showForm, setShowForm] = useState(false);
