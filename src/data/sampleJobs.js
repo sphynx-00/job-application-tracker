@@ -1,0 +1,15 @@
+const DAY = 86_400_000;
+const daysAgo = (n) => new Date(Date.now() - n * DAY);
+
+export const sampleJobs = [
+  { id: "j1", title: "Senior Frontend Engineer", company: "Monzo", location: "London", remote: true, type: "full-time", salaryMin: 85000, salaryMax: 105000, postedAt: daysAgo(1), summary: "Build the web experience used by millions of customers, with React, TypeScript and a strong design system." },
+  { id: "j2", title: "Product Engineer", company: "Wise", location: "London", remote: false, type: "full-time", salaryMin: 70000, salaryMax: 90000, postedAt: daysAgo(2), summary: "Own features end to end, from the first idea to the release, in a small cross-functional team." },
+  { id: "j3", title: "React Developer", company: "Octopus Energy", location: "Manchester", remote: true, type: "contract", salaryMin: 60000, salaryMax: 75000, postedAt: daysAgo(3), summary: "Six-month contract to rebuild the customer dashboard with accessibility and performance in mind." },
+  { id: "j4", title: "Full-stack Developer", company: "Deliveroo", location: "Bristol", remote: false, type: "full-time", salaryMin: 65000, salaryMax: 80000, postedAt: daysAgo(4), summary: "Work across Node.js services and React apps that help riders and restaurants every day." },
+  { id: "j5", title: "Frontend Developer", company: "Cazoo", location: "Edinburgh", remote: true, type: "part-time", salaryMin: 32000, salaryMax: 40000, postedAt: daysAgo(6), summary: "Three days a week building listing and checkout pages. Flexible hours, fully remote friendly." },
+  { id: "j6", title: "Staff Engineer", company: "Stripe", location: "London", remote: false, type: "full-time", salaryMin: 120000, salaryMax: 150000, postedAt: daysAgo(7), summary: "Set technical direction for the dashboard platform and mentor engineers across several teams." },
+  { id: "j7", title: "UI Engineer", company: "Figma", location: "London", remote: true, type: "full-time", salaryMin: 90000, salaryMax: 115000, postedAt: daysAgo(9), summary: "Craft fast, polished interfaces for a collaborative design tool, with a close eye on detail." },
+  { id: "j8", title: "Junior Web Developer", company: "Bulb", location: "Bristol", remote: false, type: "full-time", salaryMin: 32000, salaryMax: 38000, postedAt: daysAgo(11), summary: "A first role for someone who loves the web. Pair with senior engineers and ship in your first week." },
+  { id: "j9", title: "Frontend Contractor", company: "Revolut", location: "London", remote: true, type: "contract", salaryMin: 75000, salaryMax: 95000, postedAt: daysAgo(14), summary: "Short contract to migrate legacy screens to a modern component library." },
+  { id: "j10", title: "Software Engineer", company: "Skyscanner", location: "Edinburgh", remote: false, type: "full-time", postedAt: daysAgo(18), summary: "Help travellers find the best flights with search interfaces that stay quick on every device." },
+];
