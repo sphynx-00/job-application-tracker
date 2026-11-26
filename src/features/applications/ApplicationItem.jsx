@@ -1,13 +1,8 @@
 import Badge from "../../components/ui/Badge";
 import ListItem from "../../components/ui/ListItem";
+import { statuses } from '../../../src/lib/status';
 import CompanyLogo from "./CompanyLogo";
 
-const statuses = {
-  applied: { label: "Applied", tone: "blue" },
-  interview: { label: "Interview", tone: "purple" },
-  offer: { label: "Offer", tone: "green" },
-  rejected: { label: "Rejected", tone: "red" },
-};
 
 export default function ApplicationItem({ title, company, appliedAgo, salary, status }) {
   const badge = statuses[status];
